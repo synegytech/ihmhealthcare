@@ -362,7 +362,7 @@ export function Home() {
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-3">
                           <span className="text-[#059669] text-xs font-bold uppercase tracking-wider">Philanthropy</span>
-                          <span className="text-primary/40 text-xs font-medium">May 14, 2024</span>
+                          <span className="text-primary/40 text-xs font-medium">January 25, 2025</span>
                         </div>
                         <Link to="/news/1">
                           <h3 className="text-xl font-bold text-primary mb-3 hover:text-[#0052B4] transition-colors">Mr. Peter Obi, donated N100 million to IHM Health System</h3>
@@ -374,7 +374,7 @@ export function Home() {
                     <div className="flex flex-col md:flex-row gap-8 group">
                       <Link to="/news/2" className="w-full md:w-1/3 aspect-video rounded-3xl overflow-hidden shadow-lg">
                         <img 
-                          src="https://images.unsplash.com/photo-1559039282-4c3ca4c25b44?auto=format&fit=crop&q=80&w=800" 
+                          src="images/sr2.jpg" 
                           alt="Annual Gala"
                           className="w-full h-full object-cover transition-transform group-hover:scale-105"
                           referrerPolicy="no-referrer"
