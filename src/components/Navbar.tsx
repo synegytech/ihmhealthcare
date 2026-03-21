@@ -78,7 +78,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group relative z-50">
           <img 
-            src="public/logos/logo.png" 
+            src="logos/logo.png" 
             alt="IHM Healthcare Foundation" 
             className={cn(
               "w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-sm",
