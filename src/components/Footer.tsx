@@ -9,7 +9,7 @@ export function Footer() {
         <div className="md:col-span-4">
           <Link to="/" className="flex items-center gap-3 mb-6 group">
             <div className="bg-white p-4 rounded-2xl inline-block shadow-lg transition-transform group-hover:scale-105">
-              <img src="logos/logo.png" alt="IHM Healthcare Foundation" className="h-20 w-auto object-contain" />
+              <img src="logos/logo.png" alt="IHM Healthcare Foundation" className="h-10 w-auto object-contain" />
             </div>
           </Link>
           <p className="text-white/70 leading-relaxed mb-8 max-w-sm">
