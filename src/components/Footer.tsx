@@ -19,7 +19,7 @@ export function Footer() {
             <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-tertiary transition-colors">
               <Instagram size={20} />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-tertiary transition-colors">
+            <a href="https://www.facebook.com/IHMSHNkpor?_rdc=2&_rdr#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-tertiary transition-colors">
               <Facebook size={20} />
             </a>
             <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-tertiary transition-colors">
