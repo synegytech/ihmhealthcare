@@ -353,7 +353,7 @@ export function Home() {
                     <div className="flex flex-col md:flex-row gap-8 group">
                       <Link to="/news/1" className="w-full md:w-1/3 aspect-video rounded-3xl overflow-hidden shadow-lg">
                         <img 
-                          src="public/images/mrpeterobi.jpg" 
+                          src="images/mrpeterobi.jpg"
                           alt="Mr peter obi's donation"
                           className="w-full h-full object-cover transition-transform group-hover:scale-105"
                           referrerPolicy="no-referrer"
