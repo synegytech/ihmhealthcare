@@ -82,7 +82,7 @@ export function Navbar() {
             alt="IHM Healthcare Foundation" 
             className={cn(
               "w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-sm",
-              scrolled ? "h-14 md:h-16" : "h-18 md:h-26",
+              scrolled ? "h-17 md:h-25" : "h-18 md:h-26",
               !scrolled && isHomePage && "brightness-0 invert" // Make logo white on home hero
             )} 
           />
