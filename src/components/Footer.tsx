@@ -9,7 +9,7 @@ export function Footer() {
         <div className="md:col-span-4">
           <Link to="/" className="flex items-center gap-3 mb-6 group">
             <div className="bg-white p-4 rounded-2xl inline-block shadow-lg transition-transform group-hover:scale-105">
-              <img src="public/logos/logo.png" alt="IHM Healthcare Foundation" className="h-50 w-auto object-contain" />
+              <img src="logos/logo.png" alt="IHM Healthcare Foundation" className="h-20 w-auto object-contain" />
             </div>
           </Link>
           <p className="text-white/70 leading-relaxed mb-8 max-w-sm">
@@ -35,7 +35,7 @@ export function Footer() {
           <h4 className="font-display font-bold text-lg mb-6">Foundation</h4>
           <ul className="flex flex-col gap-4 text-white/70">
             <li><Link to="/about" className="hover:text-tertiary transition-colors">About Us</Link></li>
-            <li><Link to="/programs" className="hover:text-tertiary transition-colors">Our Programs</Link></li>
+            {/* <li><Link to="/programs" className="hover:text-tertiary transition-colors">Our Programs</Link></li> */}
             <li><Link to="/give" className="hover:text-tertiary transition-colors">Ways to Give</Link></li>
             <li><Link to="/news" className="hover:text-tertiary transition-colors">News & Events</Link></li>
           </ul>
