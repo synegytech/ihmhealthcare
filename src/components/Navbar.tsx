@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'motion/react';
 
 const navLinks = [
   { name: 'Mission', path: '/' },
-  { name: 'Programs', path: '/programs' },
+  // { name: 'Programs', path: '/programs' },
   { name: 'News & Events', path: '/news' },
   { name: 'Ways to Give', path: '/give' },
   { name: 'About', path: '/about' },
@@ -82,7 +82,7 @@ export function Navbar() {
             alt="IHM Healthcare Foundation" 
             className={cn(
               "w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-sm",
-              scrolled ? "h-17 md:h-25" : "h-18 md:h-26",
+              scrolled ? "h-18 md:h-26" : "h-19 md:h-27",
               !scrolled && isHomePage && "brightness-0 invert" // Make logo white on home hero
             )} 
           />
@@ -141,7 +141,7 @@ export function Navbar() {
             >
               Volunteer
             </Link>
-            <Link
+            {/* <Link
               to="/give"
               className={cn(
                 "px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95",
@@ -153,7 +153,7 @@ export function Navbar() {
               )}
             >
               Donate Now
-            </Link>
+            </Link> */}
           </div>
         </div>
 
