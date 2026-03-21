@@ -95,7 +95,7 @@ export function WaysToGive() {
             <div className="relative aspect-square w-full max-w-[500px] ml-auto">
               <div className="absolute -inset-4 bg-[#A7F3D0]/20 rounded-[60px] blur-3xl -z-10" />
               <img
-                src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=1000"
+                src="images/sr.jpg"
                 alt="Compassionate Healthcare"
                 className="w-full h-full object-cover rounded-[60px] shadow-2xl"
                 referrerPolicy="no-referrer"
