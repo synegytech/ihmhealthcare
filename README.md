@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="1200" height="auto" alt="IHM Healthcare Banner" src="https://github.com/public/images/logo.png" />
+  <img width="1200" height="auto" alt="IHM Healthcare Banner" src="https://github.com/public/images/logos/logo.png" />
 
   # IHM Healthcare Foundation
   ### *Funding Healthcare in Africa with Compassion & Innovation*
