@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="1200" height="auto" alt="IHM Healthcare Banner" src="https://github.com/synegytech/ihmhealthcare/blob/main/public/logos/ihmasset1.png"/>
+  <img width="1200" height="auto" alt="IHM Healthcare Banner" src="public/logos/ihmasset1.png" />
 
   # IHM Healthcare Foundation
   ### *Funding Healthcare in Africa with Compassion & Innovation*
@@ -100,5 +100,5 @@ This project is licensed under the Apache-2.0 License. See the [LICENSE](LICENSE
 ---
 
 <div align="center">
-        Developed by <a href="https://synegytech.com.ng"><b>SynegyTech Team</b></a>
-    </div>
+  Developed by <a href="https://synegytech.com.ng"><b>SynegyTech Team</b></a>
+</div>

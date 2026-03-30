@@ -84,7 +84,20 @@ export function Footer() {
 
       <div className="max-w-7xl mx-auto pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
         <p>© 2026 IHM Healthcare Foundation. All rights reserved.</p>
-        <p>A 501(c)(3) Non-Profit Organization</p>
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+          <p>A 501(c)(3) Non-Profit Organization</p>
+          <p className="flex items-center gap-1">
+            Developed by 
+            <a 
+              href="https://synegytech.com.ng/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/60 hover:text-tertiary transition-colors font-medium decoration-tertiary/30 underline-offset-4 hover:underline"
+            >
+              SynegyTech Team
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
