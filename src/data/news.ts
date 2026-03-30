@@ -47,22 +47,20 @@ export const newsItems: NewsItem[] = [
   },
   {
     id: 3,
-    category: 'Medical Innovation',
-    date: 'May 14, 2024',
-    title: 'New Genomic Center Opens with $20M Grant from IHM',
-    description: 'The center will focus on personalized medicine and rare disease research, marking a new era in compassionate clinical care.',
+    category: 'Leadership',
+    date: 'August 24, 2024',
+    title: 'Board Inauguration',
+    description: 'A formal inauguration of both the Nigerian and USA Boards of Directors, marking a critical step in our mission toward global healthcare equality.',
     content: `
-      <p>The IHM Healthcare Foundation is proud to announce the opening of its state-of-the-art Genomic Center, made possible by a generous $20 million grant. This landmark facility represents a significant leap forward in our mission to provide cutting-edge, compassionate care to our community.</p>
+      <p>The IHM Health System reached a significant milestone on August 24, 2024, with the formal inauguration of its dual-structured leadership team: the Nigeria Board of Directors and the USA Board of Directors. This event marks a critical step forward in our mission to provide high-quality, inexpensive healthcare to marginalized communities across the globe.</p>
       
-      <h3>A New Era of Personalized Medicine</h3>
-      <p>The center will focus on genomic sequencing and personalized medicine, allowing our medical teams to tailor treatments to the unique genetic makeup of each patient. This approach is particularly transformative for patients with rare diseases and complex conditions that have previously been difficult to treat.</p>
+      <h3>Global Oversight, Local Impact</h3>
+      <p>The joint inauguration ceremony brought together medical professionals, community leaders, and missionary workers from both continents. The newly appointed board members bring a wealth of expertise in clinical care, legal oversight, and philanthropic development. "By unifying our leadership across borders, we are creating a stronger bridge between resources and results," stated the newly inaugurated Chairman.</p>
       
-      <h3>Research and Collaboration</h3>
-      <p>Beyond clinical care, the Genomic Center will serve as a hub for international research collaboration. We are partnering with leading academic institutions to accelerate the discovery of new therapies and diagnostic tools.</p>
-      
-      <p>"This center is more than just a building; it's a promise to our patients that we will never stop searching for better ways to heal," said Dr. Helena Vance, Chief Medical Officer.</p>
+      <h3>Commitment to Sustainable Healthcare</h3>
+      <p>During the ceremony, the boards outlined their shared vision for the next five years, which includes the completion of the 250-bed hospital in Nkpor, Nigeria, and the expansion of mobile medical outreach programs. The inauguration serves as a formal commitment to transparency, accountability, and the restoration of dignity for those most in need.</p>
     `,
-    image: 'https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&q=80&w=800',
+    image: '/images/Board-Inauguration.png',
   },
   {
     id: 4,
