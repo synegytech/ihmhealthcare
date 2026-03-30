@@ -100,5 +100,5 @@ This project is licensed under the Apache-2.0 License. See the [LICENSE](LICENSE
 ---
 
 <div align="center">
-  Developed by <b>IHM Healthcare IT Team</b>
-</div>
+        Developed by <a href="https://synegytech.com.ng"><b>SynegyTech Team</b></a>
+    </div>
