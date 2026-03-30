@@ -39,7 +39,13 @@ export function WaysToGive() {
     }
   };
 
-  // Removed Hosted Button implementation as requested for simpler button
+  useEffect(() => {
+    if (window.paypal && paypalContainerRef.current) {
+      window.paypal.HostedButtons({
+        hostedButtonId: "YQ5CHEBECNHUN",
+      }).render(paypalContainerRef.current);
+    }
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -428,157 +434,135 @@ export function WaysToGive() {
             subtitle="More Options"
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
             {/* Bank Transfer */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-[#F8F9FA] rounded-[32px] p-6 md:p-8 border border-gray-100 shadow-sm flex flex-col"
+              className="bg-[#F8F9FA] rounded-[32px] p-10 md:p-12 border border-gray-100 shadow-sm flex flex-col"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#0052B4]/10 rounded-xl flex items-center justify-center text-[#0052B4]">
-                  <Landmark size={24} />
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-16 h-16 bg-[#0052B4]/10 rounded-2xl flex items-center justify-center text-[#0052B4]">
+                  <Landmark size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-primary">Direct Bank Transfer</h3>
+                <h3 className="text-2xl font-bold text-primary">Direct Bank Transfer</h3>
               </div>
-              <div className="space-y-4">
-                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm relative group">
-                  <p className="text-[10px] font-bold text-primary/40 uppercase tracking-widest mb-1">Account Name</p>
+              <div className="space-y-6">
+                <div className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm relative group">
+                  <p className="text-xs font-bold text-primary/40 uppercase tracking-widest mb-2">Account Name</p>
                   <div className="flex items-start justify-between gap-4">
-                    <p className="text-base font-bold text-primary leading-tight">Immaculate Heart of Mary Sisters Healthcare Foundation</p>
+                    <p className="text-lg font-bold text-primary leading-tight">Immaculate Heart of Mary Sisters Healthcare Foundation</p>
                     <button
                       onClick={() => copyToClipboard('Immaculate Heart of Mary Sisters Healthcare Foundation', 'name')}
-                      className="p-1.5 hover:bg-surface rounded-lg transition-colors text-primary/40 hover:text-tertiary shrink-0"
+                      className="p-2 hover:bg-surface rounded-lg transition-colors text-primary/40 hover:text-tertiary shrink-0"
                       title="Copy account name"
                     >
-                      {copiedName ? <Check size={16} className="text-[#059669]" /> : <Copy size={16} />}
+                      {copiedName ? <Check size={20} className="text-[#059669]" /> : <Copy size={20} />}
                     </button>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                    <p className="text-[10px] font-bold text-primary/40 uppercase tracking-widest mb-1">Bank Name</p>
-                    <p className="text-base font-bold text-primary">Globus Bank</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                    <p className="text-xs font-bold text-primary/40 uppercase tracking-widest mb-2">Bank Name</p>
+                    <p className="text-lg font-bold text-primary">Globus Bank</p>
                   </div>
 
-                  <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm relative group">
-                    <p className="text-[10px] font-bold text-primary/40 uppercase tracking-widest mb-1">Account Number</p>
+                  <div className="p-6 bg-white rounded-2xl border border-gray-100 shadow-sm relative group">
+                    <p className="text-xs font-bold text-primary/40 uppercase tracking-widest mb-2">Account Number</p>
                     <div className="flex items-center justify-between">
-                      <p className="text-base font-bold text-primary tracking-wider">1000284153</p>
+                      <p className="text-xl font-bold text-primary tracking-wider">1000284153</p>
                       <button
                         onClick={() => copyToClipboard('1000284153', 'account')}
-                        className="p-1.5 hover:bg-surface rounded-lg transition-colors text-primary/40 hover:text-tertiary"
+                        className="p-2 hover:bg-surface rounded-lg transition-colors text-primary/40 hover:text-tertiary"
                         title="Copy account number"
                       >
-                        {copiedAccount ? <Check size={16} className="text-[#059669]" /> : <Copy size={16} />}
+                        {copiedAccount ? <Check size={20} className="text-[#059669]" /> : <Copy size={20} />}
                       </button>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 p-3 bg-[#0052B4]/5 rounded-xl border border-[#0052B4]/10">
-                  <div className="w-6 h-6 rounded-full bg-[#0052B4]/10 flex items-center justify-center text-[#0052B4] shrink-0">
-                    <CheckCircle2 size={12} />
+                <div className="flex items-center gap-4 p-4 bg-[#0052B4]/5 rounded-xl border border-[#0052B4]/10">
+                  <div className="w-8 h-8 rounded-full bg-[#0052B4]/10 flex items-center justify-center text-[#0052B4] shrink-0">
+                    <CheckCircle2 size={16} />
                   </div>
-                  <p className="text-xs text-primary/70 font-medium">
+                  <p className="text-sm text-primary/70 font-medium">
                     Please include your name in transfer description for proper acknowledgment.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* PayPal & Other */}
-            {/* PayPal & Other */}
+            {/* Scan to Donate */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-[#F8F9FA] rounded-[32px] p-6 md:p-8 border border-gray-100 shadow-sm flex flex-col"
+              className="bg-[#F8F9FA] rounded-[32px] p-10 md:p-12 border border-gray-100 shadow-sm flex flex-col"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#0052B4]/10 rounded-xl flex items-center justify-center text-[#0052B4]">
-                  <CreditCard size={24} />
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-16 h-16 bg-[#0052B4]/10 rounded-2xl flex items-center justify-center text-[#0052B4]">
+                  <QrCode size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-primary">PayPal & Card Payments</h3>
+                <h3 className="text-2xl font-bold text-primary">Scan to Donate</h3>
               </div>
 
-              <div className="flex-grow flex flex-col p-6 md:p-8 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                <div className="text-center mb-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0052B4]/5 rounded-full text-[#0052B4] text-[10px] font-bold uppercase tracking-widest mb-3">
-                    <ShieldCheck size={12} /> Secure Payment Portal
-                  </div>
-                  <h4 className="text-xl font-bold text-primary mb-2">Donate via PayPal</h4>
-                  <p className="text-primary/60 text-sm max-w-[240px] mx-auto">
-                    Support our mission globally using PayPal, Venmo, or major credit cards.
-                  </p>
-                </div>
-
-                <div className="w-full max-w-[320px] mx-auto bg-surface/30 p-6 rounded-2xl border border-gray-50 flex flex-col items-center">
-                  <a
-                    href="https://www.paypal.com/donate?hosted_button_id=YQ5CHEBECNHUN"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-[#0070BA] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#005ea6] transition-all shadow-md group"
-                  >
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                      alt="PayPal"
-                      className="h-5 brightness-0 invert"
-                      referrerPolicy="no-referrer"
-                    />
-                    Checkout with PayPal
-                  </a>
-                  <p className="mt-3 text-[10px] font-bold text-primary/30 uppercase tracking-[0.1em]">Instant & Secure</p>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-gray-100 flex flex-col items-center">
-                  <div className="flex flex-wrap items-center justify-center gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-300">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4" referrerPolicy="no-referrer" />
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-3" referrerPolicy="no-referrer" />
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-4" referrerPolicy="no-referrer" />
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/American_Express_logo_%282018%29.svg" alt="Amex" className="h-3" referrerPolicy="no-referrer" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Scan to Donate */}
-            {/* Scan to Donate */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-[#F8F9FA] rounded-[32px] p-6 md:p-8 border border-gray-100 shadow-sm flex flex-col"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#0052B4]/10 rounded-xl flex items-center justify-center text-[#0052B4]">
-                  <QrCode size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-primary">Scan to Donate</h3>
-              </div>
-
-              <div className="flex-grow flex flex-col items-center justify-center p-6 bg-white rounded-2xl border border-gray-100 shadow-sm">
+              <div className="flex-grow flex flex-col items-center justify-center p-10 bg-white rounded-2xl border border-gray-100 shadow-sm">
                 <div className="relative group">
-                  <div className="absolute -inset-4 bg-tertiary/5 rounded-3xl blur-xl group-hover:bg-tertiary/10 transition-colors" />
+                  <div className="absolute -inset-6 bg-tertiary/5 rounded-[40px] blur-2xl group-hover:bg-tertiary/10 transition-colors" />
                   <img
                     src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://www.paypal.com/donate?token=mFDsZwS4JacfyuNkFzU8mh_q4Gqp8y95ZqlC8G4SVaBKwUqjeXJ87jgJwFwQVWAFYz2fmANa-b6dSmW1breQqje-kcu"
                     alt="Scan to Donate QR Code"
-                    className="relative w-40 h-40 md:w-48 md:h-48 object-contain rounded-xl shadow-sm"
+                    className="relative w-48 h-48 md:w-56 md:h-56 object-contain rounded-2xl shadow-sm"
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <p className="mt-6 text-primary/60 text-center max-w-[200px] text-xs font-medium">
-                  Scan with your camera to give instantly on mobile.
+                <p className="mt-8 text-primary/60 text-center max-w-[240px] text-sm font-medium leading-relaxed">
+                  Scan with your mobile camera to give instantly. Secure & verified.
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center justify-center gap-2 text-primary/30 text-[10px] font-bold uppercase tracking-widest">
-                <ShieldCheck size={10} /> Verified QR
+              <div className="mt-8 flex items-center justify-center gap-2 text-primary/30 text-xs font-bold uppercase tracking-widest">
+                <ShieldCheck size={14} /> Verified QR
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* PayPal One-Time Section */}
+      <section id="paypal-one-time" className="py-24 px-6 bg-surface relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center">
+          <SectionHeading
+            title="Give via PayPal"
+            subtitle="Secure Payment"
+          />
+          <p className="text-primary/70 text-lg leading-relaxed mb-12 max-w-2xl mx-auto">
+            Use your PayPal account, Venmo, or major credit cards for a secure one-time donation. Your gift directly supports our mission.
+          </p>
+
+          <div className="bg-white rounded-[40px] p-10 md:p-16 shadow-xl border border-gray-100 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-tertiary/40 via-tertiary to-tertiary/40" />
+            
+            <div className="max-w-sm mx-auto">
+              <div className="mb-10 inline-flex items-center gap-2 px-4 py-2 bg-[#0052B4]/5 rounded-full text-[#0052B4] text-xs font-bold uppercase tracking-widest border border-[#0052B4]/10">
+                <ShieldCheck size={14} /> PayPal Verified Portal
+              </div>
+              
+              <div className="min-h-[150px] flex flex-col items-center justify-center">
+                <div ref={paypalContainerRef} className="w-full" />
+                <p className="mt-4 text-[11px] font-bold text-primary/30 uppercase tracking-[0.2em]">Safe • Fast • Secure</p>
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-gray-100 flex flex-wrap items-center justify-center gap-6 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-300">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4" referrerPolicy="no-referrer" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-3" referrerPolicy="no-referrer" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-4" referrerPolicy="no-referrer" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/American_Express_logo_%282018%29.svg" alt="Amex" className="h-3" referrerPolicy="no-referrer" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
