@@ -130,21 +130,21 @@ export function About() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
-              { name: 'Barr. Ikenna Egbuna SAN', role: 'Chairman' },
-              { name: 'Sr. M. Nkiruka Okafor', role: 'Board Member' },
-              { name: 'Sr. Mary Therese Ann Ugwuja', role: 'Board Member' },
-              { name: 'Sr. Maria Irena Onyemaiz', role: 'Board Member' },
-              { name: 'Sr. Mary Fides Chukwuma', role: 'Board Member' },
-              { name: 'Rev. Fr. Remigius Nwangwu', role: 'Board Member' },
-              { name: 'Mrs. Ngozi Iwere', role: 'Board Member' },
-              { name: 'Dr. Aaron Shitery', role: 'Board Member' },
-              { name: 'Sr. Marie Lynn Makau', role: 'Board Member' },
-              { name: 'Ekpeleamaka Ikegbunam', role: 'Board Member' },
+              { name: 'Barr. Ikenna Egbuna SAN', role: 'Chairman', image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&q=80&w=200' },
+              { name: 'Sr. M. Nkiruka Okafor', role: 'Board Member', image: '/images/Sr. M. Nkiruka Okafor.png' },
+              { name: 'Sr. Mary Therese Ann Ugwuja', role: 'Board Member', image: '/images/Sr. Mary Therese Ann Ugwuja.png' },
+              { name: 'Sr. Maria Irena Onyemaizu', role: 'Board Member', image: '/images/Sr.-Maria-Irena-Onyemaizu.png' },
+              { name: 'Sr. Mary Fides Chukwuma', role: 'Board Member', image: '/images/Sr. Mary Fides Chukwuma .png' },
+              { name: 'Rev. Fr. Remigius Nwangwu', role: 'Board Member', image: '/images/Rev.-Fr.-Remigius-Nwangwu.png' },
+              { name: 'Mrs. Ngozi Iwere', role: 'Board Member', image: '/images/Mrs.-Ngozi-Iwere.png' },
+              { name: 'Dr. Aaron Shitery', role: 'Board Member', image: '/images/Dr.-Aaron-Shitery.png' },
+              { name: 'Sr. Marie Lynn Makau', role: 'Board Member', image: '/images/Sr.-Lyn-Makau.png' },
+              { name: 'Ekpeleamaka Ikegbunam', role: 'Board Member', image: '/images/Ekpeleamaka-Ikegbunam.png' },
             ].map((person, idx) => (
               <div key={idx} className="group flex flex-col items-center text-center">
                 <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-primary/5 group-hover:border-tertiary transition-colors duration-300">
                   <img
-                    src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&q=80&w=200"
+                    src={person.image}
                     alt={person.name}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                     referrerPolicy="no-referrer"
@@ -170,15 +170,15 @@ export function About() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { name: 'Sr. M. Nkiruka Okafor', role: 'Executive Director & President' },
-              { name: 'Dr. Agodichi Nwosu', role: 'Vice President' },
-              { name: 'Sr. Mary DorisAnne Okere', role: 'Secretary' },
-              { name: 'Sr. Mary Loveth Emecheta', role: 'Book Keeper' },
+              { name: 'Sr. M. Nkiruka Okafor', role: 'Executive Director & President', image: '/images/Sr.-Inkiruka-okafor us.jpg' },
+              { name: 'Dr. Agodichi Nwosu', role: 'Vice President', image: '/images/Dr-Agodichi-Nwosu.png' },
+              { name: 'Sr. Mary DorisAnne Okere', role: 'Secretary', image: '/images/Sr-Mary-Doris-Anne-Okere.jpg' },
+              { name: 'Sr. Mary Loveth Emecheta', role: 'Book Keeper', image: '/images/sr_Mary_loveth_Emecheta-removebg-preview.png' },
             ].map((person, idx) => (
               <div key={idx} className="group flex flex-col items-center text-center">
                 <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-2 border-primary/5 group-hover:border-tertiary transition-colors duration-300">
                   <img
-                    src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&q=80&w=300"
+                    src={person.image}
                     alt={person.name}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                     referrerPolicy="no-referrer"
