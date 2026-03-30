@@ -26,7 +26,7 @@ export const newsItems: NewsItem[] = [
       
       <p>This donation marks a new era in compassionate clinical care for the region, reinforcing IHM's mission to serve the most vulnerable.</p>
     `,
-    image: 'images/mrpeterobi.jpg',
+    image: '/images/mrpeterobi.jpg',
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ export const newsItems: NewsItem[] = [
       <h3>A Night of Celebration</h3>
       <p>The evening featured inspiring stories of recovery and resilience, highlighting the real-world impact of our donors' generosity. We are deeply grateful to everyone who contributed to making this our most successful gala to date.</p>
     `,
-    image: 'images/sr2.jpg',
+    image: '/images/sr2.jpg',
   },
   {
     id: 3,
