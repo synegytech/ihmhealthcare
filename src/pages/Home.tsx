@@ -5,6 +5,7 @@ import { ImpactCard } from '@/src/components/ImpactCard';
 import { NewsItemSkeleton, ImpactCardSkeleton, CollectiveImpactSkeleton } from '@/src/components/Skeletons';
 import { Heart, Activity, Users, ShieldCheck, ArrowRight, ExternalLink, MapPin, PlusSquare, GraduationCap, Globe, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { newsItems } from '@/src/data/news';
 
 export function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -349,48 +350,28 @@ export function Home() {
                   </>
                 ) : (
                   <>
-                    {/* News Item 1 */}
-                    <div className="flex flex-col md:flex-row gap-8 group">
-                      <Link to="/news/1" className="w-full md:w-1/3 aspect-video rounded-3xl overflow-hidden shadow-lg">
-                        <img 
-                          src="images/mrpeterobi.jpg"
-                          alt="Mr peter obi's donation"
-                          className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                          referrerPolicy="no-referrer"
-                        />
-                      </Link>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="text-[#059669] text-xs font-bold uppercase tracking-wider">Philanthropy</span>
-                          <span className="text-primary/40 text-xs font-medium">January 25, 2025</span>
-                        </div>
-                        <Link to="/news/1">
-                          <h3 className="text-xl font-bold text-primary mb-3 hover:text-[#0052B4] transition-colors">Mr. Peter Obi, donated N100 million to IHM Health System</h3>
+                    {newsItems.slice(0, 2).map((item) => (
+                      <div key={item.id} className="flex flex-col md:flex-row gap-8 group">
+                        <Link to={`/news/${item.id}`} className="w-full md:w-1/3 aspect-video rounded-3xl overflow-hidden shadow-lg">
+                          <img 
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                            referrerPolicy="no-referrer"
+                          />
                         </Link>
-                        <p className="text-primary/60 leading-relaxed">Former Anambra State governor, Mr. Peter Obi's donation to the IHM Health System, at Mmiata-Anam in Anambra West Local Government, marks a new era in compassionate clinical care.</p>
-                      </div>
-                    </div>
-                    {/* News Item 2 */}
-                    <div className="flex flex-col md:flex-row gap-8 group">
-                      <Link to="/news/2" className="w-full md:w-1/3 aspect-video rounded-3xl overflow-hidden shadow-lg">
-                        <img 
-                          src="images/sr2.jpg" 
-                          alt="Annual Gala"
-                          className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                          referrerPolicy="no-referrer"
-                        />
-                      </Link>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="text-[#059669] text-xs font-bold uppercase tracking-wider">Community Engagement</span>
-                          <span className="text-primary/40 text-xs font-medium">May 10, 2024</span>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-3">
+                            <span className="text-[#059669] text-xs font-bold uppercase tracking-wider">{item.category}</span>
+                            <span className="text-primary/40 text-xs font-medium">{item.date}</span>
+                          </div>
+                          <Link to={`/news/${item.id}`}>
+                            <h3 className="text-xl font-bold text-primary mb-3 hover:text-[#0052B4] transition-colors">{item.title}</h3>
+                          </Link>
+                          <p className="text-primary/60 leading-relaxed">{item.description}</p>
                         </div>
-                        <Link to="/news/2">
-                          <h3 className="text-xl font-bold text-primary mb-3 hover:text-[#0052B4] transition-colors">Annual Gala Raises Record Funds for Rural Healthcare</h3>
-                        </Link>
-                        <p className="text-primary/60 leading-relaxed">Over 1,000 attendees joined us for our yearly celebration of life and generosity, exceeding our fundraising goals.</p>
                       </div>
-                    </div>
+                    ))}
                   </>
                 )}
               </div>

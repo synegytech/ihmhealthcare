@@ -72,7 +72,7 @@ export function WaysToGive() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="paypal.com/us/fundraiser/charity/4699895"
+                href="https://www.paypal.com/us/fundraiser/charity/4699895"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#0052B4] text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#004191] transition-all shadow-lg text-center"
@@ -350,19 +350,18 @@ export function WaysToGive() {
             </div>
           </div>
 
-          <div className="lg:order-1 bg-[#F8F9FA] rounded-[40px] p-8 md:p-12 shadow-xl border border-gray-100 relative">
-            <div className="absolute top-8 right-8">
-              <div className="px-4 py-1.5 bg-tertiary/10 text-tertiary rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+          <div className="lg:order-1 bg-[#F8F9FA] rounded-[40px] p-6 sm:p-8 md:p-12 shadow-xl border border-gray-100 relative">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-2">PayPal Subscription</h3>
+                <p className="text-primary/50 font-medium">Select your monthly contribution amount</p>
+              </div>
+              <div className="inline-flex self-start sm:self-center px-4 py-1.5 bg-tertiary/10 text-tertiary rounded-full text-[10px] font-bold uppercase tracking-widest items-center gap-2">
                 <Calendar size={12} /> Recurring
               </div>
             </div>
 
-            <div className="mb-10">
-              <h3 className="text-2xl font-bold text-primary mb-2">PayPal Subscription</h3>
-              <p className="text-primary/50 font-medium">Select your monthly contribution amount</p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
               {donationAmounts.map((amt) => (
                 <button
                   key={`paypal-${amt}`}
@@ -382,7 +381,7 @@ export function WaysToGive() {
             <form
               action="https://www.paypal.com/cgi-bin/webscr"
               method="post"
-              target="_top"
+              target="_blank"
               ref={paypalFormRef}
               className="space-y-8"
             >
@@ -438,13 +437,13 @@ export function WaysToGive() {
             subtitle="More Options"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mt-12">
             {/* Bank Transfer */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-[#F8F9FA] rounded-[40px] p-8 md:p-12 border border-gray-100 shadow-sm"
+              className="lg:col-span-5 xl:col-span-4 bg-[#F8F9FA] rounded-[40px] p-6 sm:p-8 md:p-12 border border-gray-100 shadow-sm flex flex-col justify-between"
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 bg-[#0052B4]/10 rounded-2xl flex items-center justify-center text-[#0052B4]">
@@ -506,7 +505,7 @@ export function WaysToGive() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-[#F8F9FA] rounded-[40px] p-8 md:p-12 border border-gray-100 shadow-sm flex flex-col"
+              className="lg:col-span-12 xl:col-span-5 bg-[#F8F9FA] rounded-[40px] p-6 sm:p-8 md:p-12 border border-gray-100 shadow-sm flex flex-col items-center"
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 bg-[#0052B4]/10 rounded-2xl flex items-center justify-center text-[#0052B4]">
@@ -559,7 +558,7 @@ export function WaysToGive() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-[#F8F9FA] rounded-[40px] p-8 md:p-12 border border-gray-100 shadow-sm flex flex-col"
+              className="lg:col-span-7 xl:col-span-3 bg-[#F8F9FA] rounded-[40px] p-6 sm:p-8 md:p-12 border border-gray-100 shadow-sm flex flex-col justify-center"
             >
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-14 h-14 bg-[#0052B4]/10 rounded-2xl flex items-center justify-center text-[#0052B4]">
