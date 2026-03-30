@@ -181,7 +181,7 @@ export function WaysToGive() {
                     "py-4 rounded-2xl font-bold border-2 transition-all",
                     amount === amt
                       ? "border-tertiary bg-accent text-tertiary"
-"border-gray-100 text-primary/50 hover:border-tertiary/30"
+                      : "border-gray-100 text-primary/50 hover:border-tertiary/30"
                   )}
                 >
                   {amt === 'Custom' ? amt : `$${amt}`}
@@ -361,7 +361,7 @@ export function WaysToGive() {
                     "py-4 rounded-2xl font-bold border-2 transition-all",
                     paypalAmount === amt || (amt === 'Custom' && !donationAmounts.filter(a => a !== 'Custom').includes(paypalAmount))
                       ? "border-tertiary bg-white text-tertiary shadow-sm"
-"border-gray-200 text-primary/50 hover:border-tertiary/30 bg-white/50"
+                      : "border-gray-200 text-primary/50 hover:border-tertiary/30 bg-white/50"
                   )}
                 >
                   {amt === 'Custom' ? amt : `$${amt}`}
