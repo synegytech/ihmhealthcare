@@ -21,8 +21,10 @@ export function WaysToGive() {
   const [notifyContact, setNotifyContact] = useState('');
   const [copiedAccount, setCopiedAccount] = useState(false);
   const [copiedName, setCopiedName] = useState(false);
-  
+
+  const [paypalAmount, setPaypalAmount] = useState('50');
   const paypalContainerRef = useRef<HTMLDivElement>(null);
+  const paypalFormRef = useRef<HTMLFormElement>(null);
 
   const donationAmounts = ['25', '50', '100', '250', '500', 'Custom'];
 
@@ -41,7 +43,7 @@ export function WaysToGive() {
     if (window.paypal && paypalContainerRef.current) {
       // Clear container first
       paypalContainerRef.current.innerHTML = '';
-      
+
       window.paypal.HostedButtons({
         hostedButtonId: "YQ5CHEBECNHUN",
       }).render(paypalContainerRef.current);
@@ -69,15 +71,15 @@ export function WaysToGive() {
               Every gift to IHM Healthcare Foundation directly fuels breakthrough research, patient-centered care, and the essential clinical resources that our community relies on.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a 
-                href="https://www.paypal.com/donate?token=mFDsZwS4JacfyuNkFzU8mh_q4Gqp8y95ZqlC8G4SVaBKwUqjeXJ87jgJwFwQVWAFYz2fmANa-b6dSmW1breQqje-kcu&useraction=commit%2Fdonate%2F&sdkMeta=eyJ1cmwiOiJodHRwczovL3d3dy5wYXlwYWxvYmplY3RzLmNvbS9kb25hdGUvc2RrL2RvbmF0ZS1zZGsuanMiLCJhdHRycyI6eyJkYXRhLXVpZCI6InVpZF9wb2t1aW9tbmJnc293cGhpc2F1Z2VianVpb21iamsifX0&targetMeta=eyJ6b2lkVmVyc2lvbiI6IjlfMF81OCIsInRhcmdldCI6IkRPTkFURSIsInNka1ZlcnNpb24iOiIwLjkuMCJ9"
+              <a
+                href="paypal.com/us/fundraiser/charity/4699895"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#0052B4] text-white px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#004191] transition-all shadow-lg text-center"
               >
                 Donate to PayPal Giving Fund <ArrowRight size={20} />
               </a>
-              <button 
+              <button
                 onClick={() => document.getElementById('other-ways')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-[#F8F9FA] text-primary px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-white transition-all shadow-sm border border-gray-100"
               >
@@ -316,6 +318,118 @@ export function WaysToGive() {
         </div>
       </section>
 
+      {/* PayPal Recurring Giving Replica Section */}
+      <section id="paypal-recurring" className="py-24 px-6 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-tertiary/20 to-transparent" />
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="lg:order-2">
+            <SectionHeading
+              title="Join Our Circle of Hope"
+              subtitle="Monthly Recurring Giving"
+            />
+            <p className="text-primary/70 text-lg leading-relaxed mb-10">
+              Become a sustaining partner in our mission. Monthly gifts provide the reliable support we need to plan ahead and ensure that life-saving care is always available.
+            </p>
+
+            <div className="space-y-6">
+              {[
+                { title: 'Reliable Support', desc: 'Sustained funding allows for long-term clinical planning.' },
+                { title: 'Automatic & Easy', desc: 'Securely automated payments you can adjust at any time.' },
+                { title: 'Enhanced Impact', desc: 'Small monthly gifts add up to significant year-round change.' }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-4 p-4 rounded-2xl hover:bg-surface transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+                    <CheckCircle2 size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-primary">{item.title}</h4>
+                    <p className="text-sm text-primary/60">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:order-1 bg-[#F8F9FA] rounded-[40px] p-8 md:p-12 shadow-xl border border-gray-100 relative">
+            <div className="absolute top-8 right-8">
+              <div className="px-4 py-1.5 bg-tertiary/10 text-tertiary rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                <Calendar size={12} /> Recurring
+              </div>
+            </div>
+
+            <div className="mb-10">
+              <h3 className="text-2xl font-bold text-primary mb-2">PayPal Subscription</h3>
+              <p className="text-primary/50 font-medium">Select your monthly contribution amount</p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 mb-8">
+              {donationAmounts.map((amt) => (
+                <button
+                  key={`paypal-${amt}`}
+                  onClick={() => setPaypalAmount(amt === 'Custom' ? '' : amt)}
+                  className={cn(
+                    "py-4 rounded-2xl font-bold border-2 transition-all",
+                    paypalAmount === amt || (amt === 'Custom' && !donationAmounts.filter(a => a !== 'Custom').includes(paypalAmount))
+                      ? "border-tertiary bg-white text-tertiary shadow-sm"
+                      : "border-gray-200 text-primary/50 hover:border-tertiary/30 bg-white/50"
+                  )}
+                >
+                  {amt === 'Custom' ? amt : `$${amt}`}
+                </button>
+              ))}
+            </div>
+
+            <form
+              action="https://www.paypal.com/cgi-bin/webscr"
+              method="post"
+              target="_top"
+              ref={paypalFormRef}
+              className="space-y-8"
+            >
+              <input type="hidden" name="cmd" value="_s-xclick" />
+              <input type="hidden" name="hosted_button_id" value="YEA3KWNSW957J" />
+              <input type="hidden" name="currency_code" value="USD" />
+              <input type="hidden" name="on0" value="Donate to IHM Healthcare" />
+
+              <div>
+                <label className="block text-xs font-bold text-primary/40 uppercase tracking-widest mb-3">Monthly Amount (USD)</label>
+                <div className="relative group">
+                  <span className="absolute left-6 top-1/2 -translate-y-1/2 text-2xl font-bold text-primary transition-colors group-focus-within:text-tertiary">$</span>
+                  <input
+                    type="text"
+                    name="os0"
+                    value={paypalAmount}
+                    onChange={(e) => setPaypalAmount(e.target.value)}
+                    placeholder="0.00"
+                    maxLength={200}
+                    className="w-full bg-white border-2 border-transparent rounded-2xl py-5 pl-12 pr-6 text-2xl font-bold text-primary shadow-sm focus:border-tertiary/20 focus:ring-4 focus:ring-tertiary/5 outline-none transition-all"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#0070BA] text-white py-6 rounded-2xl font-bold text-xl hover:bg-[#005ea6] transition-all shadow-lg hover:shadow-[#0070BA]/20 flex items-center justify-center gap-3 group"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                  alt="PayPal"
+                  className="h-6 brightness-0 invert"
+                  referrerPolicy="no-referrer"
+                />
+                Subscribe Now
+                <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <div className="flex items-center justify-center gap-6 opacity-40 grayscale group-hover:grayscale-0 transition-all">
+                <ShieldCheck size={18} className="text-primary" />
+                <p className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Secure PayPal Checkout</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
       {/* Other Payment Methods */}
       <section id="other-ways" className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -323,7 +437,7 @@ export function WaysToGive() {
             title="Alternative Ways to Give"
             subtitle="More Options"
           />
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {/* Bank Transfer */}
             <motion.div
@@ -338,13 +452,13 @@ export function WaysToGive() {
                 </div>
                 <h3 className="text-2xl font-bold text-primary">Direct Bank Transfer</h3>
               </div>
-              
+
               <div className="space-y-6">
                 <div className="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm relative group">
                   <p className="text-xs font-bold text-primary/40 uppercase tracking-widest mb-2">Account Name</p>
                   <div className="flex items-start justify-between gap-4">
                     <p className="text-lg font-bold text-primary leading-tight">Immaculate Heart of Mary Sisters Healthcare Foundation</p>
-                    <button 
+                    <button
                       onClick={() => copyToClipboard('Immaculate Heart of Mary Sisters Healthcare Foundation', 'name')}
                       className="p-2 hover:bg-surface rounded-lg transition-colors text-primary/40 hover:text-tertiary shrink-0"
                       title="Copy account name"
@@ -353,18 +467,18 @@ export function WaysToGive() {
                     </button>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm">
                     <p className="text-xs font-bold text-primary/40 uppercase tracking-widest mb-2">Bank Name</p>
                     <p className="text-lg font-bold text-primary">Globus Bank</p>
                   </div>
-                  
+
                   <div className="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm relative group">
                     <p className="text-xs font-bold text-primary/40 uppercase tracking-widest mb-2">Account Number</p>
                     <div className="flex items-center justify-between">
                       <p className="text-lg font-bold text-primary tracking-wider">1000284153</p>
-                      <button 
+                      <button
                         onClick={() => copyToClipboard('1000284153', 'account')}
                         className="p-2 hover:bg-surface rounded-lg transition-colors text-primary/40 hover:text-tertiary"
                         title="Copy account number"
@@ -374,7 +488,7 @@ export function WaysToGive() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 p-4 bg-[#0052B4]/5 rounded-2xl border border-[#0052B4]/10">
                   <div className="w-8 h-8 rounded-full bg-[#0052B4]/10 flex items-center justify-center text-[#0052B4] shrink-0">
                     <CheckCircle2 size={14} />
@@ -400,7 +514,7 @@ export function WaysToGive() {
                 </div>
                 <h3 className="text-2xl font-bold text-primary">PayPal & Card Payments</h3>
               </div>
-              
+
               <div className="flex-grow flex flex-col p-8 md:p-12 bg-white rounded-3xl border border-gray-100 shadow-sm">
                 <div className="text-center mb-10">
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0052B4]/5 rounded-full text-[#0052B4] text-xs font-bold uppercase tracking-widest mb-4">
@@ -411,11 +525,11 @@ export function WaysToGive() {
                     Support our mission globally using PayPal, Venmo, or any major debit/credit card.
                   </p>
                 </div>
-                
+
                 <div className="w-full max-w-[420px] mx-auto bg-surface/30 p-6 md:p-10 rounded-[32px] border border-gray-50">
-                  <div 
-                    id="paypal-container-YQ5CHEBECNHUN" 
-                    ref={paypalContainerRef} 
+                  <div
+                    id="paypal-container-YQ5CHEBECNHUN"
+                    ref={paypalContainerRef}
                     className="w-full min-h-[350px]"
                   >
                     {/* PayPal button will render here */}
@@ -453,13 +567,13 @@ export function WaysToGive() {
                 </div>
                 <h3 className="text-2xl font-bold text-primary">Scan to Donate</h3>
               </div>
-              
+
               <div className="flex-grow flex flex-col items-center justify-center p-8 bg-white rounded-3xl border border-gray-100 shadow-sm">
                 <div className="relative group">
                   <div className="absolute -inset-4 bg-tertiary/5 rounded-[40px] blur-xl group-hover:bg-tertiary/10 transition-colors" />
-                  <img 
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://www.paypal.com/donate?token=mFDsZwS4JacfyuNkFzU8mh_q4Gqp8y95ZqlC8G4SVaBKwUqjeXJ87jgJwFwQVWAFYz2fmANa-b6dSmW1breQqje-kcu" 
-                    alt="Scan to Donate QR Code" 
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://www.paypal.com/donate?token=mFDsZwS4JacfyuNkFzU8mh_q4Gqp8y95ZqlC8G4SVaBKwUqjeXJ87jgJwFwQVWAFYz2fmANa-b6dSmW1breQqje-kcu"
+                    alt="Scan to Donate QR Code"
                     className="relative w-48 h-48 md:w-64 md:h-64 object-contain rounded-2xl shadow-sm"
                     referrerPolicy="no-referrer"
                   />
@@ -468,7 +582,7 @@ export function WaysToGive() {
                   Open your camera or QR scanner app to give instantly via your mobile device.
                 </p>
               </div>
-              
+
               <div className="mt-8 flex items-center justify-center gap-2 text-primary/30 text-[10px] font-bold uppercase tracking-widest">
                 <ShieldCheck size={12} /> Verified Secure QR
               </div>
@@ -514,7 +628,10 @@ export function WaysToGive() {
                   Easily adjustable at any time
                 </li>
               </ul>
-              <button className="text-[#0052B4] font-bold flex items-center gap-2 hover:underline group">
+              <button
+                onClick={() => document.getElementById('paypal-recurring')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-[#0052B4] font-bold flex items-center gap-2 hover:underline group"
+              >
                 Start Monthly Gift <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
             </motion.div>
