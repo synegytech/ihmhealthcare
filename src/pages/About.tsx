@@ -130,7 +130,7 @@ export function About() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
-              { name: 'Barr. Ikenna Egbuna SAN', role: 'Chairman', image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&q=80&w=200' },
+              { name: 'Barr. Ikenna Egbuna SAN', role: 'Chairman', image: '/images/Barr. Ikenna Egbuna SAN.png' },
               { name: 'Sr. M. Nkiruka Okafor', role: 'Board Member', image: '/images/Sr. M. Nkiruka Okafor.png' },
               { name: 'Sr. Mary Therese Ann Ugwuja', role: 'Board Member', image: '/images/Sr. Mary Therese Ann Ugwuja.png' },
               { name: 'Sr. Maria Irena Onyemaizu', role: 'Board Member', image: '/images/Sr.-Maria-Irena-Onyemaizu.png' },
